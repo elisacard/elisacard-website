@@ -16,3 +16,14 @@
 html { scroll-behavior: smooth; color-scheme: only light; }
 body { @apply bg-white text-ink font-sans antialiased; }
 h1, h2, h3 { @apply font-serif text-ink; }
+
+/* The one moving detail: a soft halo that breathes slowly (8 seconds, like a calm breath) */
+@keyframes breathe {
+  0%, 100% { transform: scale(0.96); opacity: 0.7; }
+  50% { transform: scale(1.04); opacity: 1; }
+}
+.breathe { animation: breathe 8s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .breathe { animation: none; } }
+
+/* Visible focus for keyboard users */
+a:focus-visible, summary:focus-visible { outline: 2px solid var(--color-pink); outline-offset: 3px; }

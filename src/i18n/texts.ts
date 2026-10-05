@@ -49,35 +49,46 @@ export const pages = {
     },
     primary: { en: 'Read my story', fr: 'Découvrir mon histoire' },
     secondary: { en: 'Ways to work with me', fr: 'Travailler avec moi' },
+    // Pictures: placeholders for now; replace the files in public/images/
+    heroImage: '/images/hero.svg',
+    heroAlt: { en: 'Soft morning light over gentle hills', fr: 'Douce lumière du matin sur des collines' },
     storyTitle: { en: 'My journey', fr: 'Mon parcours' },
+    storyQuote: { en: 'Five boys, one mother, and a lighter way to live.', fr: 'Cinq garçons, une mère, et une façon plus légère de vivre.' },
     // TODO: a short version of Elisa's story, in her words
     storyText: {
       en: '[Short version of Elisa’s story — to write together]',
       fr: '[Version courte de l’histoire d’Elisa — à écrire ensemble]',
     },
     storyLink: { en: 'Read the full story', fr: 'Lire toute l’histoire' },
+    storyImage: '/images/journey.svg',
+    storyAlt: { en: 'Balanced stones in soft pink light', fr: 'Galets en équilibre dans une lumière rose' },
     waysTitle: { en: 'Ways to work with me', fr: 'Travailler avec moi' },
     ways: [
       {
         path: 'coaching',
+        image: '/images/coaching.svg',
         title: { en: 'Coaching', fr: 'Coaching' },
         // TODO: one sentence on coaching
         text: { en: '[One sentence about coaching]', fr: '[Une phrase sur le coaching]' },
+        link: { en: 'Discover coaching', fr: 'Découvrir le coaching' },
       },
       {
         path: 'retreats',
+        image: '/images/retreats.svg',
         title: { en: 'Retreats', fr: 'Retraites' },
         // TODO: one sentence on retreats
         text: { en: '[One sentence about retreats]', fr: '[Une phrase sur les retraites]' },
+        link: { en: 'See the retreats', fr: 'Voir les retraites' },
       },
       {
         path: 'speaking',
+        image: '/images/speaking.svg',
         title: { en: 'Speaking & Webinars', fr: 'Conférences & Webinaires' },
         // TODO: one sentence on speaking and webinars
         text: { en: '[One sentence about talks and webinars]', fr: '[Une phrase sur les conférences et webinaires]' },
+        link: { en: 'See talks and webinars', fr: 'Voir les conférences' },
       },
     ],
-    more: { en: 'Discover', fr: 'Découvrir' },
     cta: contactCta,
   },
 
