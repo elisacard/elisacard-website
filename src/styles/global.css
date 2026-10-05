@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+/* Elisa's palette: mostly white, small touches of orange and pink */
+@theme {
+  --color-ink: #3a3330;
+  --color-soft: #6f6560;
+  --color-orange: #c45a1f;
+  --color-orange-light: #f2a46b;
+  --color-pink: #e88aa8;
+  --color-blush: #fdf1f4;
+  --color-peach: #fff6ee;
+  --font-serif: "Lora", Georgia, serif;
+  --font-sans: "Nunito Sans", system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+body { @apply bg-white text-ink font-sans antialiased; }
+h1, h2, h3 { @apply font-serif text-ink; }

@@ -1,0 +1,91 @@
+---
+import '../styles/global.css';
+import { site, nav, pick, href, type Lang } from '../i18n/texts';
+
+interface Props {
+  lang: Lang;
+  path: string; // page address without language, e.g. '' for home, 'about'
+  title: string;
+  description?: string;
+}
+
+const { lang, path, title, description = pick(site.tagline, lang) } = Astro.props;
+const other: Lang = lang === 'en' ? 'fr' : 'en';
+const year = new Date().getFullYear();
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" hreflang="en" href={new URL(href('en', path), Astro.site)} />
+    <link rel="alternate" hreflang="fr" href={new URL(href('fr', path), Astro.site)} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=Nunito+Sans:wght@400;600;700&display=swap"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col">
+    <header class="border-b border-blush">
+      <div class="mx-auto max-w-5xl px-5 py-5 flex items-center justify-between gap-4">
+        <a href={href(lang, '')} class="font-serif text-xl text-ink">
+          Elisa <span class="text-orange">Card</span>
+        </a>
+
+        <!-- Large screens: full menu -->
+        <nav class="hidden lg:flex items-center gap-6 text-sm">
+          {nav.map((item) => (
+            <a
+              href={href(lang, item.path)}
+              class={item.path === path ? 'text-orange font-semibold' : 'text-soft hover:text-orange'}
+            >
+              {pick(item.label, lang)}
+            </a>
+          ))}
+          <a href={href(other, path)} class="rounded-full border border-pink px-3 py-1 text-xs text-ink hover:bg-blush" aria-label={pick(site.switchLabel, lang)}>
+            {pick(site.switchShort, lang)}
+          </a>
+        </nav>
+
+        <!-- Phones: language switch + menu that opens on tap -->
+        <div class="flex items-center gap-3 lg:hidden">
+          <a href={href(other, path)} class="rounded-full border border-pink px-3 py-1 text-xs text-ink" aria-label={pick(site.switchLabel, lang)}>
+            {pick(site.switchShort, lang)}
+          </a>
+          <details class="relative">
+            <summary class="list-none cursor-pointer rounded-full bg-peach px-4 py-2 text-sm text-ink">
+              {pick(site.menu, lang)}
+            </summary>
+            <nav class="absolute right-0 z-10 mt-2 w-60 rounded-2xl bg-white p-3 shadow-lg ring-1 ring-blush">
+              {nav.map((item) => (
+                <a
+                  href={href(lang, item.path)}
+                  class={`block rounded-xl px-4 py-3 ${item.path === path ? 'bg-blush text-orange font-semibold' : 'text-ink'}`}
+                >
+                  {pick(item.label, lang)}
+                </a>
+              ))}
+            </nav>
+          </details>
+        </div>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="mt-24 border-t border-blush">
+      <div class="mx-auto max-w-5xl px-5 py-10 text-sm text-soft flex flex-col gap-2 sm:flex-row sm:justify-between">
+        <p class="font-serif italic text-ink">{pick(site.motto, lang)}</p>
+        <p>© {year} Elisa Card</p>
+      </div>
+    </footer>
+  </body>
+</html>

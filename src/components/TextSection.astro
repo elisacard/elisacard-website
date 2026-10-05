@@ -1,0 +1,13 @@
+---
+// A simple block of text with a heading.
+interface Props {
+  title: string;
+  text: string;
+}
+const { title, text } = Astro.props;
+---
+
+<section class="mx-auto max-w-3xl px-5 py-10">
+  <h2 class="text-2xl">{title}</h2>
+  <p class="mt-4 text-lg leading-relaxed text-soft">{text}</p>
+</section>
