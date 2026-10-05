@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import { pages, pick, type Lang } from '../i18n/texts';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const p = pages.contact;
+---
+
+<Base lang={lang} path="contact" title={pick(p.metaTitle, lang)}>
+  <PageIntro eyebrow={pick(p.eyebrow, lang)} title={pick(p.title, lang)} intro={pick(p.intro, lang)} />
+  <section class="mx-auto max-w-3xl px-5">
+    <p class="rounded-3xl bg-blush px-6 py-10 text-center text-soft">{pick(p.soon, lang)}</p>
+  </section>
+</Base>

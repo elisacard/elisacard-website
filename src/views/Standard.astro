@@ -1,0 +1,20 @@
+---
+// Shared design for About, Coaching, Retreats and Speaking & Webinars:
+// opening, a few text sections, then an invitation to get in touch.
+import Base from '../layouts/Base.astro';
+import PageIntro from '../components/PageIntro.astro';
+import TextSection from '../components/TextSection.astro';
+import CallToAction from '../components/CallToAction.astro';
+import { pages, pick, type Lang } from '../i18n/texts';
+
+type Key = 'about' | 'coaching' | 'retreats' | 'speaking';
+interface Props { lang: Lang; page: Key }
+const { lang, page } = Astro.props;
+const p = pages[page];
+---
+
+<Base lang={lang} path={page} title={pick(p.metaTitle, lang)}>
+  <PageIntro eyebrow={pick(p.eyebrow, lang)} title={pick(p.title, lang)} intro={pick(p.intro, lang)} />
+  {p.sections.map((s) => <TextSection title={pick(s.title, lang)} text={pick(s.text, lang)} />)}
+  <CallToAction lang={lang} cta={p.cta} />
+</Base>

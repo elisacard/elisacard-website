@@ -1,0 +1,17 @@
+---
+// The opening of every page: small label, title, short introduction.
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro: string;
+}
+const { eyebrow, title, intro } = Astro.props;
+---
+
+<section class="mx-auto max-w-3xl px-5 pt-16 pb-10 sm:pt-24">
+  <p class="text-sm font-semibold uppercase tracking-widest text-pink">{eyebrow}</p>
+  <h1 class="mt-4 text-4xl leading-tight sm:text-5xl">{title}</h1>
+  <span class="mt-6 block h-1 w-16 rounded-full bg-orange-light"></span>
+  <p class="mt-6 text-lg leading-relaxed text-soft">{intro}</p>
+  <slot />
+</section>
