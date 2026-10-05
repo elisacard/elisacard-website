@@ -13,6 +13,6 @@
   --font-sans: "Nunito Sans", system-ui, sans-serif;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; color-scheme: only light; }
 body { @apply bg-white text-ink font-sans antialiased; }
 h1, h2, h3 { @apply font-serif text-ink; }
